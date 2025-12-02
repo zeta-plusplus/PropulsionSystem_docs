@@ -1,0 +1,180 @@
+<html>
+<head>
+	<style type="text/css">
+		h3
+		{
+			line-height: 1em;
+			margin: 0.5em 0px;
+		}
+		
+		h4
+		{
+			line-height: 1em;
+			margin: 0.5em 0px;
+		}
+		
+		p
+		{
+			padding-left: 1em;
+			text-indent: 2em;
+			line-height: 1em;
+			margin: 0em 0px;
+		}
+		
+		p1
+		{
+			padding-left: 2em;
+			text-indent: 4em;
+			line-height: 1em;
+			margin: 0em 0px;
+		}
+		
+		ul
+		{
+			margin: 0.25em 0.25px;
+		}
+		
+		ol
+		{
+			margin: 0.25em 0.5px;
+		}
+		
+		li
+		{
+			text-indent: 2em;
+			line-height: 1em;
+			margin: 0em 0px;
+		}
+		
+		img
+		{
+			background-color: gray;
+			height: auto;
+			object-fit: contain;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>TrbCharFixed00 </h3>
+	icon:<br>
+	<a href="TrbCharFixed00_icon.jpg" target="_blank"><img src="TrbCharFixed00_icon.jpg" width="200"></a>
+	<p> &emsp; </p>
+		<p>convert enthalpy of fluid into mechanical rotational work. Component characteristics are fixed or given by external real-signal.</p>
+		<p> &emsp; </p>
+	
+	<h4>Scope/Calculation function </h4>
+		<ul>
+		<li>Calculation of the change in state quantities of fluid through turbine.</li>
+		<li>Calculation of power or torque obtained for given pressure ratio. </li>
+		<li>Calculation of pressure ratio as a result of extracted shaft power or torque.</li>
+		</ul>
+		<p> &emsp; </p>
+	
+	<h4>Short description of physical model/calculation method</h4>
+		<ul>
+		<li>Fluid outlet state quantities are calculated from inlet state quantities, pressure ratio adiabatic efficiency. </li>
+		<li>Causality about power can be selected </li>
+			<ul>
+			<li>Give power/torque extracted -> Pressure ratio of expansion is calculated. (may be common usage) </li>
+			<li>Give pressure ratio -> power and torque extracted are calculated .</li>
+			</ul>
+		<li>Pressure ratio and adiabatic efficiency can be input by either parameter or real-input interface.</li>
+		</ul>
+		<a href="TrbCharFixed00_internal.jpg" target="_blank"><img src= "TrbCharFixed00_internal.jpg" width="500"></a>
+		<p> &emsp; </p>
+	
+	<h4>Limitations/Assumptions of model</h4>	
+		<ul>
+		<li>No flow capacity model. The mass flow rate must be determined outside of this turbine component. </li>
+		<li>Mechanical rotational speed must be determined out of this component. </li>
+		<li>No phase change of fluid can occur. </li>
+		<li>Simulation of abnormal operation where turbine operated as if compressor (possible in windmilling jet engine in flight) or 0 change in fluid pressure cannot be performed. </li>
+		<li>Flow reversal condition cannot be simulated. </li>
+		</ul>
+		<p> &emsp; </p>
+		
+	<h4>Interface </h4>
+		<a href="TrbCharFixed00_IF.jpg" target="_blank"><img src= "TrbCharFixed00_IF.jpg" width="600"></a>
+		<p> &emsp; </p>
+	
+	<h4>Parameters </h4>
+		<p>Read the descriptions on parameter window in model for details of each parameter. This section only covers parameters which requires descriptions by figures/drawings. </p>
+		<p> &emsp; </p>
+		
+	<h4>Usage </h4>
+		<ol>
+		<li>Redeclear the package of medium. </li>
+		<li>Fill following connectors: </li>
+			<ul>
+			<li>fluid ports, _1 and _2. </li>
+			<li>flange connectors, _1 and _2. </li>
+			</ul>
+		<li>Decide how to determine pressure ratio. </li>
+			<ul>
+			<li>Pressure ratio is input; power and torque are calculated. </li>
+				<ul>
+				<li>Provide pressure ratio as parameter. </li>
+					<ol>
+					<li>Set switchDetermine_PR= "param" (parameter window)</li>
+					<li>Set pressure ratio value, "PR". (parameter window)</li>
+					</ol>
+				<li>Provide pressure ratio via real input port. </li>
+					<ol>
+					<li>Set switchDetermine_PR= "viaRealInput" (parameter window)</li>
+					<li>Fill connector, u_PR </li>
+					</ol>
+				</ul>
+			<li>Pressure ratio is calculated; torque/shaft are given. </li>
+				<ol>
+				<li>Set switchDetermine_PR= "asCalculated" (parameter window) </li>
+				</ol>
+			</ul>
+		<li>Decide how to determine adiabatic efficiency. </li>
+			<ul>
+			<li>Provide adiabatic efficiency as parameter. </li>
+				<ol>
+				<li>Set switchDetermine_eff= "param" (parameter window)</li>
+				<li>Set pressure adiabatc efficiency, "eff". (parameter window)</li>
+				</ol>
+			<li>Provide adiabatic efficiency via real input port. </li>
+				<ol>
+				<li>Set switchDetermine_eff= "viaRealInput" (parameter window)</li>
+				<li>Fill connector, u_eff </li>
+				</ol>
+			</ul>
+		</ol>
+		<p> &emsp; </p>
+	
+	<h4>Warning/Causions </h4>
+		<p>None</p>
+		<p> &emsp; </p>
+		
+	<h4>Demo models</h4>
+		<li>PropulsionSystem.Examples.Elements.BasicElements.TrbCharFixed00_ex01 </li>
+		<p><a href="TrbCharFixed00_ex01.jpg" target="_blank"><img src= "TrbCharFixed00_ex01.jpg" width="600"></a></p>
+		<p> &emsp; </p>
+		
+		<li>PropulsionSystem.Examples.Elements.BasicElements.TrbCharFixed00_ex02 </li>
+		<p><a href="TrbCharFixed00_ex02.jpg" target="_blank"><img src= "TrbCharFixed00_ex02.jpg" width="600"></a></p>
+		<p> &emsp; </p>
+		
+		<li>PropulsionSystem.Examples.Elements.BasicElements.Cmp_and_Trb_ex01 </li>
+		<p><a href="Cmp_and_Trb_ex01.jpg" target="_blank"><img src= "Cmp_and_Trb_ex01.jpg" width="600"></a></p>
+		<p> &emsp; </p>
+		
+		<li>PropulsionSystem.Examples.Elements.BasicElements.Cmp_and_Trb_ex02 </li>
+		<p><a href="Cmp_and_Trb_ex02.jpg" target="_blank"><img src= "Cmp_and_Trb_ex02.jpg" width="600"></a></p>
+		<p> &emsp; </p>
+		
+		<p> &emsp; </p>
+		
+	<h4>Equations in details </h4>
+		<p> ***** under construction ***** </p>
+		<p> &emsp; </p>
+	
+	<a href="../../../index.html">Back to index page </a>
+	<p> &emsp; </p>
+	
+</body>
+</html>
